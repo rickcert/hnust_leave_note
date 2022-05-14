@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rick请假条生成器</title>
+    <link href="https://cdn.bootcss.com/botui/0.3.9/botui-theme-default.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/botui/0.3.9/botui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/layui.css" media="all">
+</head>
+<body>
+
+<div class="entry-content">
+    <div class="logofont" style="text-align:center; font-size: 50px; margin-bottom: 20px;">仅作layui与pphp学习</div>
+    <div class="popcontainer" id="fogforest"
+         style="min-height:300px; padding:2px 6px 4px 6px; background-color: rgba(242, 242, 242,0.5); border-radius: 10px;2 px; solid">
+        <p>
+        </p>
+        <center><strong>与 rick 对话中...</strong></center>
+        <br>
+        <bot-ui><br>
+            <center>
+                <p></p>
+                <div style=" background-image: url(https://oss.amogu.cn/blog/botui/images/loading.svg);background-repeat: no-repeat;background-size: 10em;background-position: center;height: 10em;"></div>
+                <p> Loading<br></p></center>
+            <br></bot-ui>
+    </div>
+    <center><span style="color: #c5c5c5;">Last updated in 2022.05.12</span></center>
+    <div class="layui-form-item">
+        <center>
+            <button class="layui-btn" lay-submit lay-filter="*" onclick="window.location.href='rick1.html'">本班同学请假条
+            </button>
+            <button class="layui-btn" lay-submit lay-filter="*" onclick="window.location.href='rick2.html'">我的请假条
+            </button>
+        </center>
+    </div>
+
+
+</div>
+<script src="bot.js"></script>
+<script>
+    bot_ui_ini()
+</script>
+<script src="layui.js"></script>
+</body>
+</html>
