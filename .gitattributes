@@ -1,4 +1,1 @@
-*.js linguist-language=vue
-*.css linguist-language=vue
-*.html linguist-language=vue
-*.java linguist-language=vue
+*.html  linguist-detectable=true
