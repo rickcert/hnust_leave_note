@@ -1,6 +1,6 @@
 # hnust_leave_note
 
- 湖南科技大学请假条生成器
+ 湖南科技大学请假条生成器   https://hnust.rick.icu/
  <div align="center">
    <img width="160" src="http://q1.qlogo.cn/g?b=qq&nk=210401532&s=640" alt="logo"></br>
 </diV>
