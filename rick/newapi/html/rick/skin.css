@@ -1,0 +1,616 @@
+/*主题色*/
+.mt-bg-theme {
+  background-color: #52C7CA;
+}
+.mt-bg-theme-lv2 {
+  background-color: #52B5B7;
+}
+.mt-bColor-theme {
+  border-color: #52C7CA;
+}
+.mt-bColor-theme-lv2 {
+  border-color: #52B5B7;
+}
+.mt-color-theme {
+  color: #52C7CA;
+}
+.mt-color-theme-lv2 {
+  color: #52B5B7;
+}
+/*背景色*/
+.mt-bg-grey {
+  background-color: #1E2329;
+}
+.mt-bg-grey-lv2 {
+  background-color: #2F343B;
+}
+.mt-bg-grey-lv3 {
+  background-color: #92969C;
+}
+.mt-bg-grey-lv4 {
+  background-color: #BDC0C5;
+}
+.mt-bg-grey-lv5 {
+  background-color: #E8E8E8;
+}
+.mt-bg-grey-lv6 {
+  background-color: #EFEFEF;
+}
+.mt-bg-lv1 {
+  background-color: #F4F4F4;
+}
+.mt-bg-lv2 {
+  background-color: #F9F9F9;
+}
+.mt-bg-lv3 {
+  background-color: #FFFFFF;
+}
+.mt-bg-primary,
+.mt-bg-success {
+  background-color: #52C7CA;
+}
+.mt-bg-primary-lv2,
+.mt-bg-success-lv2 {
+  background-color: #52B5B7;
+}
+.mt-bg-warning {
+  background-color: #FFB950;
+}
+.mt-bg-warning-lv2 {
+  background-color: #E8AA4D;
+}
+.mt-bg-danger {
+  background-color: #F26666;
+}
+.mt-bg-danger-lv2 {
+  background-color: #D35A5A;
+}
+.mt-bg-link {
+  background-color: #4A90E2;
+}
+.mt-bg-white {
+  background-color: #FFFFFF;
+}
+.mt-bg-transparent {
+  background-color: transparent;
+}
+.mt-bg-red {
+  background-color: #F26666;
+}
+.mt-bg-orange {
+  background-color: #FF7949;
+}
+.mt-bg-yellow {
+  background-color: #FFB950;
+}
+.mt-bg-green {
+  background-color: #A2D06B;
+}
+.mt-bg-blue {
+  background-color: #4A90E2;
+}
+.mt-bg-indigo {
+  background-color: #52C7CA;
+}
+.mt-bg-purple {
+  background-color: #D98BE8;
+}
+/*基础字体色*/
+.mt-color-grey {
+  color: #1E2329;
+}
+.mt-color-grey-lv2 {
+  color: #2F343B;
+}
+.mt-color-grey-lv3 {
+  color: #92969C;
+}
+.mt-color-grey-lv4 {
+  color: #BDC0C5;
+}
+.mt-color-grey-lv5 {
+  color: #EFEFEF;
+}
+.mt-color-grey-lv6 {
+  color: #F4F4F4;
+}
+.mt-color-grey-lv7 {
+  color: #F9F9F9;
+}
+.mt-color-primary {
+  color: #52C7CA;
+}
+.mt-color-primary-lv2 {
+  color: #52B5B7;
+}
+.mt-color-warning {
+  color: #FFB950;
+}
+.mt-color-warning-lv2 {
+  color: #E8AA4D;
+}
+.mt-color-danger {
+  color: #F26666;
+}
+.mt-color-danger-lv2 {
+  color: #D35A5A;
+}
+.mt-color-white {
+  color: #FFFFFF;
+}
+.mt-color-red {
+  color: #F26666;
+}
+.mt-color-orange {
+  color: #FF7949;
+}
+.mt-color-yellow {
+  color: #FFB950;
+}
+.mt-color-green {
+  color: #A2D06B;
+}
+.mt-color-blue {
+  color: #4A90E2;
+}
+.mt-color-indigo {
+  color: #52C7CA;
+}
+.mt-color-purple {
+  color: #D98BE8;
+}
+.mt-color-transparent {
+  color: transparent;
+}
+/*边框色*/
+.mt-bColor-grey {
+  border-color: #1E2329;
+}
+.mt-bColor-grey-lv2 {
+  border-color: #2F343B;
+}
+.mt-bColor-grey-lv3 {
+  border-color: #92969C;
+}
+.mt-bColor-grey-lv4 {
+  border-color: #BDC0C5;
+}
+.mt-bColor-grey-lv5 {
+  border-color: #E8E8E8;
+}
+.mt-bColor-grey-lv6 {
+  border-color: #EFEFEF;
+}
+.mt-bColor-grey-lv7 {
+  border-color: #F4F4F4;
+}
+.mt-bColor-grey-lv8 {
+  border-color: #F9F9F9;
+}
+.mt-bColor-primary {
+  border-color: #52C7CA;
+}
+.mt-bColor-primary-lv2 {
+  border-color: #52B5B7;
+}
+.mt-bColor-warning {
+  border-color: #FFB950;
+}
+.mt-bColor-warning-lv2 {
+  border-color: #E8AA4D;
+}
+.mt-bColor-danger {
+  border-color: #F26666;
+}
+.mt-bColor-danger-lv2 {
+  border-color: #D35A5A;
+}
+.mt-bColor-transparent {
+  border-color: transparent;
+}
+.mt-bColor-white {
+  border-color: #FFFFFF;
+}
+.mt-bColor-red {
+  border-color: #F26666;
+}
+.mt-bColor-orange {
+  border-color: #FF7949;
+}
+.mt-bColor-yellow {
+  border-color: #FFB950;
+}
+.mt-bColor-green {
+  border-color: #A2D06B;
+}
+.mt-bColor-blue {
+  border-color: #4A90E2;
+}
+.mt-bColor-indigo {
+  border-color: #52C7CA;
+}
+.mt-bColor-purple {
+  border-color: #D98BE8;
+}
+/*按钮*/
+.mt-btn-default {
+  color: #2F343B;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 1px #BDC0C5 inset;
+}
+.mt-btn-default.is-disabled {
+  background-color: #EFEFEF;
+}
+.mt-btn-default:not(.is-disabled):active {
+  background-color: #EFEFEF;
+}
+.mt-btn-default.is-plain {
+  border-color: #2F343B;
+  color: #2F343B;
+}
+.mt-btn-primary {
+  color: #FFFFFF;
+  background-color: #52C7CA;
+  box-shadow: 0 0 1px #52B5B7 inset;
+}
+.mt-btn-primary.is-disabled {
+  opacity: 0.3;
+  background-color: #52C7CA;
+}
+.mt-btn-primary:not(.is-disabled):active {
+  background-color: #52C7CA;
+  opacity: 0.6;
+}
+.mt-btn-primary.is-plain {
+  border-color: #52C7CA;
+  color: #52C7CA;
+  background-color: transparent;
+}
+.mt-btn-primary.is-plain:not(.is-disabled):active {
+  background-color: transparent;
+}
+.mt-btn-primary.is-plain:not(.is-disabled):active:after {
+  background-color: #52C7CA;
+}
+.mt-btn-warning {
+  color: #FFFFFF;
+  background-color: #FFB950;
+  box-shadow: 0 0 1px #E8AA4D inset;
+}
+.mt-btn-warning.is-disabled {
+  opacity: 0.3;
+  background-color: #FFB950;
+}
+.mt-btn-warning:not(.is-disabled):active {
+  background-color: #FFB950;
+  opacity: 0.6;
+}
+.mt-btn-warning.is-plain {
+  border-color: #FFB950;
+  color: #FFB950;
+  background-color: transparent;
+}
+.mt-btn-warning.is-plain:not(.is-disabled):active {
+  background-color: transparent;
+}
+.mt-btn-warning.is-plain:not(.is-disabled):active:after {
+  background-color: #FFB950;
+}
+.mt-btn-danger {
+  color: #FFFFFF;
+  background-color: #F26666;
+  box-shadow: 0 0 1px #D35A5A inset;
+}
+.mt-btn-danger.is-disabled {
+  opacity: 0.3;
+  background-color: #F26666;
+}
+.mt-btn-danger:not(.is-disabled):active {
+  background-color: #F26666;
+  opacity: 0.6;
+}
+.mt-btn-danger.is-plain {
+  border-color: #F26666;
+  color: #F26666;
+  background-color: transparent;
+}
+.mt-btn-danger.is-plain:not(.is-disabled):active {
+  background-color: transparent;
+}
+.mt-btn-danger.is-plain:not(.is-disabled):active:after {
+  background-color: #F26666;
+}
+/*active背景色*/
+.mt-bg-active-grey:active {
+  background-color: #1E2329;
+}
+.mt-bg-active-grey-lv2:active {
+  background-color: #2F343B;
+}
+.mt-bg-active-grey-lv3:active {
+  background-color: #92969C;
+}
+.mt-bg-active-grey-lv4:active {
+  background-color: #BDC0C5;
+}
+.mt-bg-active-grey-lv5:active {
+  background-color: #E8E8E8;
+}
+.mt-bg-active-grey-lv6:active {
+  background-color: #EFEFEF;
+}
+.mt-bg-active-lv1:active {
+  background-color: #F4F4F4;
+}
+.mt-bg-active-lv2:active {
+  background-color: #F9F9F9;
+}
+.mt-bg-active-primary:active,
+.mt-bg-active-success:active {
+  background-color: #52C7CA;
+}
+.mt-bg-active-primary-lv2:active,
+.mt-bg-active-success-lv2:active {
+  background-color: #52B5B7;
+}
+.mt-bg-active-warning:active {
+  background-color: #FFB950;
+}
+.mt-bg-active-warning-lv2:active {
+  background-color: #E8AA4D;
+}
+.mt-bg-active-danger:active {
+  background-color: #F26666;
+}
+.mt-bg-active-danger-lv2:active {
+  background-color: #D35A5A;
+}
+.mt-bg-active-link:active {
+  background-color: #4A90E2;
+}
+.mt-bg-active-white:active,
+.mt-bg-active-white:focus,
+.mt-bg-active-white:visited {
+  background-color: #FFFFFF;
+}
+.mt-bg-active-transparent:active {
+  background-color: transparent;
+}
+.mt-bg-active-red:active {
+  background-color: #F26666;
+}
+.mt-bg-active-orange:active {
+  background-color: #FF7949;
+}
+.mt-bg-active-yellow:active {
+  background-color: #FFB950;
+}
+.mt-bg-active-green:active {
+  background-color: #A2D06B;
+}
+.mt-bg-active-blue:active {
+  background-color: #4A90E2;
+}
+.mt-bg-active-indigo:active {
+  background-color: #52C7CA;
+}
+.mt-bg-active-purple:active {
+  background-color: #D98BE8;
+}
+/*before,after背景色*/
+.mt-bg-before-grey:before,
+.mt-bg-after-grey:after {
+  background-color: #1E2329;
+}
+.mt-bg-before-grey-lv2:before,
+.mt-bg-after-grey-lv2:after {
+  background-color: #2F343B;
+}
+.mt-bg-before-grey-lv3:before,
+.mt-bg-after-grey-lv3:after {
+  background-color: #92969C;
+}
+.mt-bg-before-grey-lv4:before,
+.mt-bg-after-grey-lv4:after {
+  background-color: #BDC0C5;
+}
+.mt-bg-before-grey-lv5:before,
+.mt-bg-after-grey-lv5:after {
+  background-color: #E8E8E8;
+}
+.mt-bg-before-grey-lv6:before,
+.mt-bg-after-grey-lv6:after {
+  background-color: #EFEFEF;
+}
+.mt-bg-before-lv1:before,
+.mt-bg-after-lv1:after {
+  background-color: #F4F4F4;
+}
+.mt-bg-before-lv2:before,
+.mt-bg-after-lv2:after {
+  background-color: #F9F9F9;
+}
+.mt-bg-before-primary:before,
+.mt-bg-before-success:before,
+.mt-bg-after-success:after,
+.mt-bg-after-success:after {
+  background-color: #52C7CA;
+}
+.mt-bg-before-primary-lv2:before,
+.mt-bg-before-success-lv2:before,
+.mt-bg-after-success:after,
+.mt-bg-before-success-lv2:after {
+  background-color: #52B5B7;
+}
+.mt-bg-before-warning:before,
+.mt-bg-after-warning:after {
+  background-color: #FFB950;
+}
+.mt-bg-before-warning-lv2:before,
+.mt-bg-after-warning-lv2:after {
+  background-color: #E8AA4D;
+}
+.mt-bg-before-danger:before,
+.mt-bg-after-danger:after {
+  background-color: #F26666;
+}
+.mt-bg-before-danger-lv2:before,
+.mt-bg-after-danger-lv2:after {
+  background-color: #D35A5A;
+}
+.mt-bg-before-link:before,
+.mt-bg-after-link:after {
+  background-color: #4A90E2;
+}
+.mt-bg-before-white:before,
+.mt-bg-after-white:after {
+  background-color: #FFFFFF;
+}
+.mt-bg-before-transparent:before,
+.mt-bg-after-transparent:after {
+  background-color: transparent;
+}
+.mt-bg-before-red:before,
+.mt-bg-after-red:after {
+  background-color: #F26666;
+}
+.mt-bg-before-orange:before,
+.mt-bg-after-orange:after {
+  background-color: #FF7949;
+}
+.mt-bg-before-yellow:before,
+.mt-bg-after-yellow:after {
+  background-color: #FFB950;
+}
+.mt-bg-before-green:before,
+.mt-bg-after-green:after {
+  background-color: #A2D06B;
+}
+.mt-bg-before-blue:before,
+.mt-bg-after-blue:after {
+  background-color: #4A90E2;
+}
+.mt-bg-before-indigo:before,
+.mt-bg-after-indigo:after {
+  background-color: #52C7CA;
+}
+.mt-bg-before-purple:before,
+.mt-bg-after-purple:after {
+  background-color: #D98BE8;
+}
+/*before,after边框色*/
+.mt-bColor-before-grey:before,
+.mt-bColor-after-grey:after {
+  border-color: #1E2329;
+}
+.mt-bColor-before-grey-lv2:before,
+.mt-bColor-after-grey-lv2:after {
+  border-color: #2F343B;
+}
+.mt-bColor-before-grey-lv3:before,
+.mt-bColor-after-grey-lv3:after {
+  border-color: #92969C;
+}
+.mt-bColor-before-grey-lv4:before,
+.mt-bColor-after-grey-lv4:after {
+  border-color: #BDC0C5;
+}
+.mt-bColor-before-grey-lv5:before,
+.mt-bColor-after-grey-lv5:after {
+  border-color: #E8E8E8;
+}
+.mt-bColor-before-grey-lv6:before,
+.mt-bColor-after-grey-lv6:after {
+  border-color: #EFEFEF;
+}
+.mt-bColor-before-lv1:before,
+.mt-bColor-after-lv1:after {
+  border-color: #F4F4F4;
+}
+.mt-bColor-before-lv2:before,
+.mt-bColor-after-lv2:after {
+  border-color: #F9F9F9;
+}
+.mt-bColor-before-primary:before,
+.mt-bColor-before-success:before,
+.mt-bColor-after-success:after,
+.mt-bColor-after-success:after {
+  border-color: #52C7CA;
+}
+.mt-bColor-before-primary-lv2:before,
+.mt-bColor-before-success-lv2:before,
+.mt-bColor-after-success:after,
+.mt-bColor-before-success-lv2:after {
+  border-color: #52B5B7;
+}
+.mt-bColor-before-warning:before,
+.mt-bColor-after-warning:after {
+  border-color: #FFB950;
+}
+.mt-bColor-before-warning-lv2:before,
+.mt-bColor-after-warning-lv2:after {
+  border-color: #E8AA4D;
+}
+.mt-bColor-before-danger:before,
+.mt-bColor-after-danger:after {
+  border-color: #F26666;
+}
+.mt-bColor-before-danger-lv2:before,
+.mt-bColor-after-danger-lv2:after {
+  border-color: #D35A5A;
+}
+.mt-bColor-before-link:before,
+.mt-bColor-after-link:after {
+  border-color: #4A90E2;
+}
+.mt-bColor-before-white:before,
+.mt-bColor-after-white:after {
+  border-color: #FFFFFF;
+}
+.mt-bColor-before-transparent:before,
+.mt-bColor-after-transparent:after {
+  border-color: transparent;
+}
+.mt-bColor-before-red:before,
+.mt-bColor-after-red:after {
+  border-color: #F26666;
+}
+.mt-bColor-before-orange:before,
+.mt-bColor-after-orange:after {
+  border-color: #FF7949;
+}
+.mt-bColor-before-yellow:before,
+.mt-bColor-after-yellow:after {
+  border-color: #FFB950;
+}
+.mt-bColor-before-green:before,
+.mt-bColor-after-green:after {
+  border-color: #A2D06B;
+}
+.mt-bColor-before-blue:before,
+.mt-bColor-after-blue:after {
+  border-color: #4A90E2;
+}
+.mt-bColor-before-indigo:before,
+.mt-bColor-after-indigo:after {
+  border-color: #52C7CA;
+}
+.mt-bColor-before-purple:before,
+.mt-bColor-after-purple:after {
+  border-color: #D98BE8;
+}
+/*特例box-shadow*/
+.mt-boxShadow-range-thumb {
+  box-shadow: 0 3px 8px 0 rgba(85, 198, 201, 0.15), 0 1px 1px 0 rgba(85, 199, 202, 0.15), 0 3px 1px 0 rgba(85, 199, 202, 0.15);
+}
+.mt-bg-primary-opacity1 {
+  background-color: rgba(82, 199, 202, 0.1);
+}
+/*三角border-color*/
+.mt-bColor-after-triangle-right:after {
+  border-color: transparent transparent transparent #BDC0C5;
+}
+/*遮罩*/
+.mt-bg-mask {
+  background: rgba(0, 0, 0, 0.5);
+}
