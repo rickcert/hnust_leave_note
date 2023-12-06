@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- 用来禁止浏览器缓存，使得每次请求test.html都从服务器下载最新版本 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="format-detection" content="telephone=yes">
+
+    <link href="//unpkg.com/layui@2.9.0/dist/css/layui.css" rel="stylesheet">
+    <script src="//unpkg.com/layui@2.9.0/dist/layui.js"></script>
+    <script src="https://hnust.rick.icu/rick.js"></script>
+<style type="text/css">#_copy {
+        align-items: center;
+        background: #4494d5;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        font-size: 13px;
+        height: 30px;
+        justify-content: center;
+        position: absolute;
+        width: 60px;
+        z-index: 1000
+    }
+
+    #select-tooltip, #sfModal, .modal-backdrop, div[id^=reader-helper] {
+        display: none !important
+    }
+
+    .modal-open {
+        overflow: auto !important
+    }
+
+    ._sf_adjust_body {
+        padding-right: 0 !important
+    }
+
+    .super_copy_btns_div {
+        position: fixed;
+        width: 154px;
+        left: 10px;
+        top: 45%;
+        background: #e7f1ff;
+        border: 2px solid #4595d5;
+        font-weight: 600;
+        border-radius: 2px;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        z-index: 5000
+    }
+
+    .super_copy_btns_logo {
+        width: 100%;
+        background: #4595d5;
+        text-align: center;
+        font-size: 12px;
+        color: #e7f1ff;
+        line-height: 30px;
+        height: 30px
+    }
+
+    .super_copy_btns_btn {
+        display: block;
+        width: 128px;
+        height: 28px;
+        background: #7f5711;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 12px;
+        border: 0;
+        outline: 0;
+        margin: 8px auto;
+        font-weight: 700;
+        cursor: pointer;
+        opacity: .9
+    }
+
+    .super_copy_btns_btn:hover {
+        opacity: .8
+    }
+
+    .super_copy_btns_btn:active {
+        opacity: 1
+    }</style>
+
+    <style type="text/css">/*!
+ * Cropper.js v1.5.9
+ * https://fengyuanchen.github.io/cropperjs
+ *
+ * Copyright 2015-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2020-09-10T13:16:21.689Z
+ */
+    .cropper-container {
+        direction: ltr;
+        font-size: 0;
+        line-height: 0;
+        position: relative;
+        -ms-touch-action: none;
+        touch-action: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+    }
+
+    .cropper-container img {
+        display: block;
+        height: 100%;
+        image-orientation: 0deg;
+        max-height: none !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        min-width: 0 !important;
+        width: 100%
+    }
+
+    .cropper-canvas, .cropper-crop-box, .cropper-drag-box, .cropper-modal, .cropper-wrap-box {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+    .cropper-canvas, .cropper-wrap-box {
+        overflow: hidden
+    }
+
+    .cropper-drag-box {
+        background-color: #fff;
+        opacity: 0
+    }
+
+    .cropper-modal {
+        background-color: #000;
+        opacity: .5
+    }
+
+    .cropper-view-box {
+        display: block;
+        height: 100%;
+        outline: 1px solid #39f;
+        outline-color: rgba(51, 153, 255, .75);
+        overflow: hidden;
+        width: 100%
+    }
+
+    .cropper-dashed {
+        border: 0 dashed #eee;
+        display: block;
+        opacity: .5;
+        position: absolute
+    }
+
+    .cropper-dashed.dashed-h {
+        border-bottom-width: 1px;
+        border-top-width: 1px;
+        height: 33.33333%;
+        left: 0;
+        top: 33.33333%;
+        width: 100%
+    }
+
+    .cropper-dashed.dashed-v {
+        border-left-width: 1px;
+        border-right-width: 1px;
+        height: 100%;
+        left: 33.33333%;
+        top: 0;
+        width: 33.33333%
+    }
+
+    .cropper-center {
+        display: block;
+        height: 0;
+        left: 50%;
+        opacity: .75;
+        position: absolute;
+        top: 50%;
+        width: 0
+    }
+
+    .cropper-center:after, .cropper-center:before {
+        background-color: #eee;
+        content: " ";
+        display: block;
+        position: absolute
+    }
+
+    .cropper-center:before {
+        height: 1px;
+        left: -3px;
+        top: 0;
+        width: 7px
+    }
+
+    .cropper-center:after {
+        height: 7px;
+        left: 0;
+        top: -3px;
+        width: 1px
+    }
+
+    .cropper-face, .cropper-line, .cropper-point {
+        display: block;
+        height: 100%;
+        opacity: .1;
+        position: absolute;
+        width: 100%
+    }
+
+    .cropper-face {
+        background-color: #fff;
+        left: 0;
+        top: 0
+    }
+
+    .cropper-line {
+        background-color: #39f
+    }
+
+    .cropper-line.line-e {
+        cursor: ew-resize;
+        right: -3px;
+        top: 0;
+        width: 5px
+    }
+
+    .cropper-line.line-n {
+        cursor: ns-resize;
+        height: 5px;
+        left: 0;
+        top: -3px
+    }
+
+    .cropper-line.line-w {
+        cursor: ew-resize;
+        left: -3px;
+        top: 0;
+        width: 5px
+    }
+
+    .cropper-line.line-s {
+        bottom: -3px;
+        cursor: ns-resize;
+        height: 5px;
+        left: 0
+    }
+
+    .cropper-point {
+        background-color: #39f;
+        height: 5px;
+        opacity: .75;
+        width: 5px
+    }
+
+    .cropper-point.point-e {
+        cursor: ew-resize;
+        margin-top: -3px;
+        right: -3px;
+        top: 50%
+    }
+
+    .cropper-point.point-n {
+        cursor: ns-resize;
+        left: 50%;
+        margin-left: -3px;
+        top: -3px
+    }
+
+    .cropper-point.point-w {
+        cursor: ew-resize;
+        left: -3px;
+        margin-top: -3px;
+        top: 50%
+    }
+
+    .cropper-point.point-s {
+        bottom: -3px;
+        cursor: s-resize;
+        left: 50%;
+        margin-left: -3px
+    }
+
+    .cropper-point.point-ne {
+        cursor: nesw-resize;
+        right: -3px;
+        top: -3px
+    }
+
+    .cropper-point.point-nw {
+        cursor: nwse-resize;
+        left: -3px;
+        top: -3px
+    }
+
+    .cropper-point.point-sw {
+        bottom: -3px;
+        cursor: nesw-resize;
+        left: -3px
+    }
+
+    .cropper-point.point-se {
+        bottom: -3px;
+        cursor: nwse-resize;
+        height: 20px;
+        opacity: 1;
+        right: -3px;
+        width: 20px
+    }
+
+    @media (min-width: 768px) {
+        .cropper-point.point-se {
+            height: 15px;
+            width: 15px
+        }
+    }
+
+    @media (min-width: 992px) {
+        .cropper-point.point-se {
+            height: 10px;
+            width: 10px
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .cropper-point.point-se {
+            height: 5px;
+            opacity: .75;
+            width: 5px
+        }
+    }
+
+    .cropper-point.point-se:before {
+        background-color: #39f;
+        bottom: -50%;
+        content: " ";
+        display: block;
+        height: 200%;
+        opacity: 0;
+        position: absolute;
+        right: -50%;
+        width: 200%
+    }
+
+    .cropper-invisible {
+        opacity: 0
+    }
+
+    .cropper-bg {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC")
+    }
+
+    .cropper-hide {
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0
+    }
+
+    .cropper-hidden {
+        display: none !important
+    }
+
+    .cropper-move {
+        cursor: move
+    }
+
+    .cropper-crop {
+        cursor: crosshair
+    }
+
+    .cropper-disabled .cropper-drag-box, .cropper-disabled .cropper-face, .cropper-disabled .cropper-line, .cropper-disabled .cropper-point {
+        cursor: not-allowed
+    }</style>
+    <style type="text/css">.bh-avatar-upload[data-v-5def570f] {
+        display: inline-block
+    }
+
+    .bh-emapAvatar-upload[data-v-5def570f] {
+        position: relative;
+        display: block
+    }
+
+    .bh-emapAvatar-upload input[data-v-5def570f] {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+
+    .cropper-buttons[data-v-5def570f] {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        border-top: 1px solid #ebedf0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+
+    .cropper-button[data-v-5def570f] {
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 20px
+    }
+
+    .preview-wrap[data-v-5def570f] {
+        background-color: #000;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch
+    }
+
+    .preview-wrap .preview-wrap-header[data-v-5def570f] {
+        position: relative;
+        height: 46px;
+        line-height: 46px;
+        color: #fff;
+        text-align: center;
+        border-bottom: 1px solid #ebedf0
+    }
+
+    .preview-wrap .preview-wrap-header .left[data-v-5def570f] {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px
+    }
+
+    .preview-wrap .preview-wrap-header .left .iconfont[data-v-5def570f] {
+        position: absolute;
+        left: -20px;
+        right: -20px;
+        top: 0;
+        bottom: 0
+    }
+
+    .preview-wrap .preview-wrap-header .right[data-v-5def570f] {
+        position: absolute;
+        top: 0;
+        right: 20px
+    }
+
+    .preview-wrap .preview-wrap-header .iconfont[data-v-5def570f] {
+        font-size: 24px
+    }
+
+    .preview-wrap .preview-wrap-header .file-label[data-v-5def570f] {
+        position: absolute;
+        left: -20px;
+        right: -20px;
+        top: 0;
+        bottom: 0;
+        opacity: 0
+    }
+
+    .preview-wrap .preview-wrap-header [type=file][data-v-5def570f] {
+        background: hsla(0, 0%, 100%, 0);
+        overflow: hidden;
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        z-index: -1;
+        opacity: 0
+    }
+
+    .preview-wrap-content[data-v-5def570f] {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .preview-wrap-content .preview-img[data-v-5def570f] {
+        display: block;
+        width: 100%;
+        height: auto
+    }
+
+    .vue-cropper-wrapper[data-v-5def570f] {
+        background-color: #000
+    }
+
+    .vue-cropper[data-v-5def570f] {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: auto
+    }</style>
+    <style type="text/css">.__em-textarea textarea[readonly=readonly] {
+        resize: none
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .__em-textarea .mint-cell .mint-cell-wrapper {
+        align-items: baseline !important
+    }
+
+    .__em-textarea .mint-textarea .mint-cell-wrapper .mint-cell-value {
+        width: 100%
+    }
+
+    .mt-cell-diy-span {
+        word-break: break-all
+    }</style>
+    <style type="text/css">.mint-selected-footer.__emapm[data-v-a4cd7b82] {
+        z-index: 2;
+        position: absolute;
+        box-sizing: border-box;
+        height: 55px
+    }
+
+    .mint-selected-footer-list-mask[data-v-a4cd7b82] {
+        background-color: rgba(0, 0, 0, .5)
+    }
+
+    .mint-selected-footer-list-container[data-v-a4cd7b82] {
+        background-color: #fff
+    }</style>
+    <style type="text/css">.slip-enter-active[data-v-c28dd806], .slip-leave-active[data-v-c28dd806] {
+        transition: transform .25s
+    }
+
+    .slip-enter[data-v-c28dd806], .slip-leave-to[data-v-c28dd806] {
+        transform: translateX(100%)
+    }
+
+    .selector-pick-container[data-v-c28dd806] {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        left: 0;
+        top: 0;
+        overflow: auto;
+        background-color: #f9f9f9;
+        z-index: 999
+    }</style>
+    <style type="text/css">.selector-pick-container .mint-box-group .mint-cell-group .mint-cell-group-content .mint-cell:first-child .mint-cell-wrapper[data-v-12b52585] {
+        border-top: none
+    }
+
+    .select-footer-btns[data-v-12b52585] {
+        display: flex;
+        height: 55px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px
+    }
+
+    .select-footer-btns button[data-v-12b52585] {
+        margin: 0 5px
+    }</style>
+    <style type="text/css">.vf-h {
+        overflow: hidden !important
+    }</style>
+    <style type="text/css">.emapm-date-picker .mint-picker-column__frame {
+        position: absolute
+    }</style>
+    <style type="text/css">.__em-selectlist .mint-picker-column__frame {
+        position: absolute
+    }
+
+    .__em-selectlist .__em-selectlist-group {
+        max-height: 250px;
+        overflow: auto
+    }</style>
+    <style type="text/css">.cancel_btn_class, .confirm_btn_class {
+        font-size: 14px
+    }</style>
+    <style type="text/css">.upload_item_loading[data-v-4c816b7c] {
+        width: 75px;
+        height: 75px;
+        box-sizing: border-box;
+        padding: 21px;
+        background: url(data:image/png;base64,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) 50% no-repeat;
+        background-size: contain
+    }
+
+    .bh-upload-wrap[data-v-4c816b7c] {
+        position: relative;
+        width: 100%
+    }
+
+    .bh-upload_required[data-v-4c816b7c] {
+        color: red
+    }
+
+    .upload_item[data-v-4c816b7c] {
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        margin: 0 8px 12px 0;
+        position: relative;
+        vertical-align: top
+    }
+
+    .upload_item_none[data-v-4c816b7c] {
+        line-height: 75px;
+        margin: 0
+    }
+
+    .cancel_upload_img[data-v-4c816b7c] {
+        position: absolute;
+        top: -13px;
+        right: -7px;
+        font-size: 18px
+    }
+
+    .upload_img[data-v-4c816b7c] {
+        width: 75px;
+        height: 75px
+    }
+
+    .upload_img_wrong[data-v-4c816b7c] {
+        width: 100px;
+        margin: 0;
+        line-height: 75px
+    }
+
+    .bh-upload-wrap .color-pdf[data-v-4c816b7c] {
+        color: #f26666
+    }
+
+    .bh-upload-wrap .color-doc[data-v-4c816b7c] {
+        color: #4a90e2
+    }
+
+    .bh-upload-wrap .color-xlsx[data-v-4c816b7c] {
+        color: #a2d06b
+    }
+
+    .bh-upload-wrap .color-ppt[data-v-4c816b7c] {
+        color: #f26666
+    }
+
+    .bh-upload-wrap .color-zip[data-v-4c816b7c] {
+        color: #92969c
+    }
+
+    .bh-upload-wrap .color-others[data-v-4c816b7c] {
+        color: #ffb950
+    }</style>
+    <style type="text/css">.cancel_btn_class, .confirm_btn_class {
+        font-size: 14px
+    }</style>
+    <style type="text/css">.upload_item_loading[data-v-da94dbc4] {
+        width: 75px;
+        height: 75px;
+        box-sizing: border-box;
+        padding: 21px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAALV0lEQVR4nO3d71NTVxoH8K9JczMDCYoJFhIwgKIBYvgxKihSWuo4VrfrtrOdaTt915nd7Yv+Nfui2xf7Zmd36qwzuq4t63QQihgEbFFigLhshQhJ0CSgJDrDjTfZF5BrAgEJORBz7vN5dRO4J89Mvpx77rnnXnbF43EAQE/fgADgTwA+A2ADoAMh64sAcAH4DsBfOjtOigCwKx6Po6dvwAzge6OhuLGi3IQivQ5qtTqXxZI3nCRJWAxHMDPrQzC0cA/Abzo7Tnp33fjJIQAYqqqsaKyyVOS6TpKHpj2zeDj9aBRAiwrAHw2GYgoT2bJKSzmMhr0NAP6gAvD5/nJTrmsiea6ivAwAPlcBaC7S0/ibZGclQ00qAAINwEm2VjKkVeW6EMIXChRhigJFmKJAEaYoUIQpChRhigJFmKJAEaYoUIQpChRhigJFmKJAEaYoUIQpChRhigJFmKJAEaYoUIQpChRhigJFmKJAEaYoUIQpChRhigJFmKJAEaYoUISpt3JdQC7979cp/OfHHqZtfnCmEwcPVDFtM58otoeKRl9icPgX5u0ODv+CaPQl83bzhWIDNTB4BwtPnzFvd+HpMwwM3mHebr5Q5CEvNL8Ap2tcfs3iMJV8+HS6xmGrt8KwtzirNvORInuonp9uyduVlgomY56DB6pQmfTQtuTPUBJue6jQ/AJcY27MzHqxGI5AkqQ1v6NWq/Fexylmn/lexyn87R//hCRJmHv8BH/+5q8pn1Wk16Gi3Mx178VdoKRYDLccQymHtPW0HmuGrrCA2WfrCgvQeqwZjjRjKEmSsPD0GRaePoPTNQ67rQ4nW49Bo+HrK+DqkCfFYrh67fqmwlS8ZzcaGmzMa2hosKF4z+7X/p7TNY5rXT9CisWY15BLXP153HIMwevzy68rLRVoajiCt/eV7FhPoFap8MVnv1/zfjT6Eo+fBHB39D6mPTMAAK/Pj1uOIXS0n9iR2nYCN4FafebW1noMzU12Jm2LYhTqt9RQq7beoWs0b6HcXIZycxlG7jrlwyJvZ4TcBMo15pa3Ky0VWYVJFKNwjU1g+tEsAsEgRDEKABAEDUqMRlTuL4etvhaCoNlS+81Ndnj9c3JP5Rpzc9NLcROomVmvvN3UcGTL7bjG3XDcHpZDlEwUo/D6/PD6/Lgzcg9tJ47DVmdN286ly9cw9/hJynulb+/DJx9/KNeYCFRy7fmOm0AthiPy9r4SY8b7S7EYbvTcxIPJX9f8TBA0kKRYytSDKEbR2+eAzzeH9zvfWXM4XB2m1e8l15hce77jJlDJX/ZWDkWrw1S8ZzcaG2yotOyXpxYiz19g2vMI90Zd8mWbxD5nTr+b0l7p2/vS9lDpakw3R5avuAlUNlzj7pQw2W11ONXWsqbX0RUWwFZnRa31UMpc14PJX2EylaYc/hKHNqXhah5qK0QxCsftYfm13VaHjvYTG57RqVUqdLSfgN1WJ7+33rhLaRQfKNfYhByE4j27caqtZdP7nmprkScxE2eGSqf4QE0/mpW3GxtsGc01qVUqNCbNtie3pVSKD1QgGJS3Ky37M94/eZ/ktpRK0YESxWjKpOVWLhTrCgvkM7bk9pRK0YFKJklbv0ibzb68UXSgBEEj9y6SJCHy/EXGbUSev5DnkZLbUypFBwoASoyvZqynPY8y3j95n+S2lErxgarcXy5v3xt1ZbQ+SYrFcG/UlbYtpVJ8oJJXDSw8fYZbjqFN73vLMSRfghEEDWz1tdtSYz5RfKAEQYO2E8fl107XOPr6b2/YU0mxGPr6b6euvzpxXPHjJ4Cu5QEAbHVW+Hxz8vU8p2scM7PeTV0cBoDDNQfWXcaiNBSoFe93vgPg1eqBhafP0NvnAOBI/IPmtKsCDtcckPclFCiZWqXCmdPvwmQqXXOhN12QEodK6plSUaBWsdVZcejggW1dAswzbgKlVqvlnkQUo1l92YKgQXOTXV6XzuImhdWSH6jBUzC5Ocsr0uvk7ScBthdpBUHDNEwA8PhJQN4uLGB3s2mucROoinKzvH139H4OK9mc5BqTa8933ATKVv9qcDztmcHIXWcOq9nYyF2nfMcLkFp7vuNmDGXYWwy7rU6ebHQM3oHXP7fjdw6vJ92dw8DykmNebvIEOAoUsLwkNzS/IN+OPu2ZSfny3jRmU1lGS47zATeHPGB5LunCh2dTbh54U9ltdfjw3Bnmg/1c46qHAl7dkWKrt772+VA7SRA0KCwooOdD5SvD3mJunheQT/jqb0nOUaAIUxQowhQFijBFgSJMUaAIUxQowhQFijBFgSJMUaAIUxQowhQFijBFgSJMUaAIUxQowhQFijBFgSJMUaAIUxQowhQFijBFgSJMUaAIUxQowhQFijBFgdoBgWAIl692YcI9metSth03dw4v/3PpOaZtmk2lMJvKNvydy1e74PX58fVXX677O6Iowuvzo9y8cVs84ChQcxi6M8K0zZZjza8NFEnFTaASPr5wLm0IFsMRhMNhGA0GaLXChm14fX5cvtq1XSVyTRFjqKUlERcvXUF3z83Xholkh7seKp3+gUEsLYnQCsK6PU97WwtKjIYdrow/3Adqwj2JCfckivQ66PX6NT8PhkJYWhIhimIOquMP14Hq7r0pn6prtVqc7nwn5fHTgWAIV/7dBbOpLOvB90ZjrkRYJ9z/xazXv+bnPPWOXAZqMRxB1/VuBIIhlBgNaG9rwQ/Xu3Hx0hWcP3saZlMZvD4/frjeDQA4f/Z01p+ZeK7n6+paDEfWvM9T78hloJYPbzpUV1lw/GgTAODTTz5C1/VuXL7aJQeqxGjAR789x2SgvtE8lJJwGSggfa9jNpUiEAzJvYler8OSKNKZH0PcBgp4NXv+cMqDQDAEAKi11qD2cA0mHiwP1h9OeVBiNMB6uAbVVZaUMdZmhMPh7Sg9b3EZqOGf76bMmi+Po1phNpXKg1+zqQzHjzZj1OnCwykP+h2D6HcMorrKgkZ7/aY/K92YSMm4DFTDkXoshsMwl5XBbC5DkV6He84xXLz0L1RXWVCb1Bu1t7Wiva0VgWAI7geTsB6u2dIgOdOZ9Y8vnMv4M/IBl4HSagWcfi/1v2xWV1kAAKNOF36Y8qBIr8Pxo82otdYAWO7FEr3XZs7YgNTeabP78I7LQKVTpNeh0V6PRns9JtyTGP55BN29NxGOROQzwUwFk8ZlqwO8nsTqBF5xH6jExGbi0AesDMytNZhwT8o91FYkgmE08DEpyQLXgVoMR9Dde1N+rdUKqK6yyGOrbMIEQF5/ZTaVZtUOT7gOVJFeh6+/+hJenx+B4Dy8Pj8eTnnkXiub6YJAMIRAMIQivY6byyYscB2ohMS1usR0wMMpjxyuxHTBp5/8LqNgjN4fAwDUWg9tS835ShGBWq26yoLqKgva21rlyc9MwhQIhjDhnoRWK6DhyObnrJSAu0D1O4YgCJlfSkleBfC6eagbvf0AgEa7jS7brMJdoBKXWLZLd+9NeRXDVqcbeMZdoNZbU56JjdaU1x6uweJihMmSFx7tuvGTI97ZcTLXdShGIBiCKIpc3k3T0zfAXw/1puN9ikERd72QnUOBIkxRoAhTFCjCFAWKMEWBIkxRoAhTFCjCFAWKMEWBIkxRoAhTFCjCFAWKMEWBIkxRoAhTFCjCFAWKMEWBIkxRoAhTFCjCFAWKMKUCIEqSlOs6SJ5byVBEBWCEnhNJsrWSIZcKwHczs/w+UY3sjJUMfacC8G0wND867ZnNcUkkX017ZhEMzTsBfLsrHo+jp2/ADOB7o6G4saLchCK9Dmq1Otd1kjeYJElYDEcwM+tHMDQ/CuB8Z8dJ7654PA4A6OkbEAB8BeALALUACnNXLskDzwFMAPg7gG86O06KAPB/CcAQ+M+pbO8AAAAASUVORK5CYII=) 50% no-repeat;
+        background-size: contain
+    }
+
+    .bh-upload-wrap[data-v-da94dbc4] {
+        position: relative;
+        width: 100%
+    }
+
+    .bh-upload_required[data-v-da94dbc4] {
+        color: red
+    }
+
+    .upload_item[data-v-da94dbc4] {
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        margin: 0 8px 12px 0;
+        position: relative;
+        vertical-align: top
+    }
+
+    .upload_item_none[data-v-da94dbc4] {
+        line-height: 75px;
+        margin: 0
+    }
+
+    .cancel_upload_img[data-v-da94dbc4] {
+        position: absolute;
+        top: -13px;
+        right: -7px;
+        font-size: 18px
+    }
+
+    .upload_img[data-v-da94dbc4] {
+        width: 75px;
+        height: 75px
+    }
+
+    .upload_img_wrong[data-v-da94dbc4] {
+        width: 100px;
+        margin: 0;
+        line-height: 75px
+    }
+
+    .bh-upload-wrap .color-pdf[data-v-da94dbc4] {
+        color: #f26666
+    }
+
+    .bh-upload-wrap .color-doc[data-v-da94dbc4] {
+        color: #4a90e2
+    }
+
+    .bh-upload-wrap .color-xlsx[data-v-da94dbc4] {
+        color: #a2d06b
+    }
+
+    .bh-upload-wrap .color-ppt[data-v-da94dbc4] {
+        color: #f26666
+    }
+
+    .bh-upload-wrap .color-zip[data-v-da94dbc4] {
+        color: #92969c
+    }
+
+    .bh-upload-wrap .color-others[data-v-da94dbc4] {
+        color: #ffb950
+    }
+
+    .bh-upload-wrap .camera[data-v-da94dbc4], .bh-upload-wrap .photo[data-v-da94dbc4] {
+        opacity: 0;
+        width: 0
+    }</style>
+    <style type="text/css">.emapm-upload-imgs[data-v-2a28b493] {
+        padding-bottom: 0
+    }</style>
+    <style type="text/css">.__em-attachment-list[data-v-0220a7a8] {
+        padding-left: 1px
+    }
+
+    .__em-attachment-list .iconfont[data-v-0220a7a8] {
+        font-size: 32px;
+        vertical-align: middle;
+        margin-right: 8px
+    }
+
+    .__em-attachment-list-title[data-v-0220a7a8] {
+        padding: 8px 0
+    }
+
+    .__em-attachment-list .file-info[data-v-0220a7a8] {
+        flex: 1
+    }
+
+    .__em-attachment-list .color-pdf[data-v-0220a7a8] {
+        color: #f26666
+    }
+
+    .__em-attachment-list .color-doc[data-v-0220a7a8] {
+        color: #4a90e2
+    }
+
+    .__em-attachment-list .color-xlsx[data-v-0220a7a8] {
+        color: #a2d06b
+    }
+
+    .__em-attachment-list .color-ppt[data-v-0220a7a8] {
+        color: #f26666
+    }
+
+    .__em-attachment-list .color-zip[data-v-0220a7a8] {
+        color: #92969c
+    }
+
+    .__em-attachment-list .color-others[data-v-0220a7a8] {
+        color: #ffb950
+    }
+
+    .__em-file-info_size[data-v-0220a7a8] {
+        margin-top: 4px;
+        font-size: 14px;
+        color: #92969c
+    }
+
+    .__em-file-info[data-v-0220a7a8] {
+        width: calc(100% - 40px)
+    }
+
+    .__em-file-info > p[data-v-0220a7a8] {
+        margin: 0;
+        padding: 1px 0 0
+    }
+
+    .__em-file-info .__em-file-info_name[data-v-0220a7a8] {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-bottom: 4px
+    }
+
+    .__em-img-icon[data-v-0220a7a8] {
+        height: 32px;
+        width: 30px;
+        margin-right: 8px
+    }
+
+    .emapm-form.emapm-form-readonly .__em-attachment-list-title[data-v-0220a7a8] {
+        padding: 6px 0;
+        font-size: 14px
+    }
+
+    .emapm-form.emapm-form-readonly .__em-attachment-list[data-v-0220a7a8] {
+        padding-left: 0
+    }
+
+    .__em-attachment-list .icon-tianjia[data-v-0220a7a8] {
+        position: relative;
+        color: #52c7ca
+    }
+
+    .__em-attachment-list .upload-file-wrap[data-v-0220a7a8] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0
+    }</style>
+    <style type="text/css">.__em-attachment-list .mint-cell-title {
+        display: flex;
+        align-items: center
+    }</style>
+    <style type="text/css">.emapm-form input, .emapm-form span, .emapm-form textarea {
+        font-family: PingFang SC, Microsoft YaHei, Times New Roman
+    }
+
+    .emapm-form .mint-cell-group > .emapm-item .mint-cell:first-child .mint-cell-wrapper {
+        border-top: .5px solid #e8e8e8
+    }
+
+    .emapm-form .mint-cell .mint-cell-value {
+        padding: 8px 0
+    }
+
+    .emapm-form .select-value {
+        text-align: left
+    }
+
+    .emapm-item {
+        position: relative
+    }
+
+    .emapm-item .mint-field .mint-cell-value.mt-color-grey-lv3 input {
+        color: inherit
+    }
+
+    .emapm-form .mint-cell-group .emapm-item:first-child .mint-cell-wrapper {
+        border-top: none
+    }
+
+    .emapm-form .mint-cell-group-title {
+        padding: 12px 20px
+    }
+
+    .emapm-form input::-webkit-input-placeholder {
+        font-weight: 400 !important
+    }
+
+    .emapm-form input:-moz-placeholder, .emapm-form input::-moz-placeholder {
+        font-weight: 400 !important
+    }
+
+    .emapm-form input:-ms-input-placeholder {
+        font-weight: 400 !important
+    }
+
+    .emapm-form input, .emapm-form input:focus {
+        font-weight: 400 !important
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group-title {
+        padding: 16px 20px;
+        font-size: 16px;
+        line-height: 16px;
+        color: #1e2329;
+        background-color: #fff !important
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell {
+        min-height: 0;
+        padding: 6px 0
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell .mint-cell-wrapper {
+        border-top-style: none;
+        font-size: 14px
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell .mint-cell-value {
+        padding: 0
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .em-select-value, .emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .mt-cell-diy-span {
+        color: #1e2329 !important
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group-content {
+        padding-bottom: 10px
+    }
+
+    .emapm-form.emapm-form-readonly .mint-hairline--top-bottom:after {
+        border-bottom-width: 1px;
+        border-top-width: 0;
+        border-color: #e8e8e8
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-hastitle + .mint-cell-group-content .emapm-item:first-child {
+        padding-top: 10px;
+        border-top: 1px solid #f4f4f4
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle {
+        padding: 0
+    }
+
+    .emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle + .mint-cell-group-content .emapm-item:first-child {
+        padding-top: 16px
+    }
+
+    .emapm-form.emapm-form-readonly .em-select-value, .emapm-form.emapm-form-readonly .mt-cell-diy-span {
+        line-height: 16px
+    }
+
+    .emapm-form.emapm-form-readonly .emapm-divide {
+        height: 10px;
+        border-bottom: 1px solid #f4f4f4
+    }</style>
+    <style data-id="immersive-translate-input-injected-css">.immersive-translate-input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2147483647;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .immersive-translate-input-loading {
+        --loading-color: #f78fb6;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: block;
+        margin: 12px auto;
+        position: relative;
+        color: white;
+        left: -100px;
+        box-sizing: border-box;
+        animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+    }
+
+    @keyframes immersiveTranslateShadowRolling {
+        0% {
+            box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        12% {
+            box-shadow: 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        25% {
+            box-shadow: 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        36% {
+            box-shadow: 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        50% {
+            box-shadow: 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color);
+        }
+
+        62% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color);
+        }
+
+        75% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color);
+        }
+
+        87% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color);
+        }
+
+        100% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+        }
+    }
+
+
+    .immersive-translate-search-recomend {
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        position: relative;
+        font-size: 16px;
+    }
+
+    .immersive-translate-search-enhancement-en-title {
+        color: #4d5156;
+    }
+
+    /* dark */
+    @media (prefers-color-scheme: dark) {
+        .immersive-translate-search-recomend {
+            border: 1px solid #3c4043;
+        }
+
+        .immersive-translate-close-action svg {
+            fill: #bdc1c6;
+        }
+
+        .immersive-translate-search-enhancement-en-title {
+            color: #bdc1c6;
+        }
+    }
+
+
+    .immersive-translate-search-settings {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+    }
+
+    .immersive-translate-search-recomend::before {
+        /* content: " "; */
+        /* width: 20px; */
+        /* height: 20px; */
+        /* top: 16px; */
+        /* position: absolute; */
+        /* background: center / contain url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAxlBMVEUAAADpTInqTIjpSofnSIfqS4nfS4XqS4nqTIjsTYnrTInqTIroS4jvQIDqTIn////+/v7rSYjpTIn8/v7uaZzrTIr9/f3wfansWJL88/b85e73qc39+/v3xNnylrvrVI/98fb62Obva5/8+fr76vH4y9zpSIj74e353Oj1ocTzm77xhK/veKbtYpjsXJTqU47oTInxjrXyh7L99fj40eH2ttH1udD3sc31ssz1rMnykLXucqPtbqD85e/1xdn2u9DzqcXrUY6FaJb8AAAADnRSTlMA34BgIM8Q37/fz7+/EGOHcVQAAAGhSURBVDjLhZPncuowEEZFTW7bXVU7xsYYTO/p7bb3f6lICIOYJOT4h7/VnFmvrBFjrF3/CR/SajBHswafctG0Qg3O8O0Xa8BZ6uw7eLjqr30SofCDVSkemMinfL1ecy20r5ygR5zz3ArcAqJExPTPKhDENEmS30Q9+yo4lEQkqVTiIEAHCT10xWERRdH0Bq0aCOPZNDV3s0xaYce1lHEoDHU8wEh3qRJypNcTAeKUIjgKMeGLDoRCLVLTVf+Ownj8Kk6H9HM6QXPgYjQSB0F00EJEu10ILQrs/QeP77BSSr0MzLOyuJJQbnUoOOIUI/A8EeJk9E4YUHUWiRyTVKGgQUB8/3e/NpdGlfI+FMQyWsCBWyz4A/ZyHXyiiz0Ne5aGZssoxRmcChw8/EFKQ5JwwkUo3FRT5yXS7q+Y/rHDZmFktzpGMvO+5QofA4FPpEmGw+EWRCFvnaof7Zhe8NuYSLR0xErKLThUSs8gnODh87ssy6438yzbLzxl012HS19vfCf3CNhnbWOL1eEsDda+gDPUvri8tSZzNFrwIZf1NmNvqC1I/t8j7nYAAAAASUVORK5CYII='); */
+    }
+
+    .immersive-translate-search-title {
+    }
+
+    .immersive-translate-search-title-wrapper {
+    }
+
+    .immersive-translate-search-time {
+        font-size: 12px;
+        margin: 4px 0 24px;
+        color: #70757a;
+    }
+
+    .immersive-translate-expand-items {
+        display: none;
+    }
+
+    .immersive-translate-search-more {
+        margin-top: 16px;
+        font-size: 14px;
+    }
+
+    .immersive-translate-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 15px;
+    }
+
+    .immersive-translate-modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+        "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    .immersive-translate-modal-title {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: hsl(205, 20%, 32%);
+    }
+
+    .immersive-translate-modal-body {
+        color: hsl(205, 20%, 32%)
+    }
+
+    .immersive-translate-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .immersive-translate-close:hover,
+    .immersive-translate-close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .immersive-translate-modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .immersive-translate-btn {
+        width: fit-content;
+        color: #fff;
+        background-color: #ea4c89;
+        border: none;
+        font-size: 14px;
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .immersive-translate-cancel-btn {
+        /* gray color */
+        background-color: rgb(89, 107, 120);
+    }
+
+    .immersive-translate-btn:hover {
+        background-color: #f082ac;
+    }
+
+    .immersive-translate-cancel-btn:hover {
+        background-color: hsl(205, 20%, 32%);
+    }
+
+
+    .immersive-translate-btn svg {
+        margin-right: 5px;
+    }
+
+    .immersive-translate-link {
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+        text-decoration: none;
+        color: #007bff;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    }
+
+    .immersive-translate-primary-link {
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+        text-decoration: none;
+        color: #ea4c89;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    }
+
+    .immersive-translate-modal input[type="radio"] {
+        margin: 0 6px;
+        cursor: pointer;
+    }
+
+    .immersive-translate-modal label {
+        cursor: pointer;
+    }
+
+    .immersive-translate-close-action {
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body _c_t_j1="1">
+
+
+<div id="app"><!---->
+    <div>
+        <div class="mint-layout-container pjbcydyxy">
+            <div class="mint-layout-container pjavwx8zi"></div>
+            <div class="mint-layout-container tjavtsl6c">
+                <div class="mint-layout-spacing sjakx3nec" style="height: 15px;"></div>
+                <div class="mint-layout-container cjarutg5r">
+                    <div class="mint-hr" style="background: rgb(232, 232, 232);"></div>
+                    <div class="mint-layout-container sfxj-class" style="display: none;"><img src="https://hnust-ticknet-swzl.oss-cn-hangzhou.aliyuncs.com/certificate/hnust/icon_ok.png"
+                                                                                              alt="已销假"
+                                                                                              style="width: 25px; position: relative; left: 20px; top: 6px;">
+                        <span id="sfxj">已销假</span></div>
+                    <div class="emapm-form emapm-form-readonly" emap-role="form"
+                         emap="{&quot;emap-name&quot;:&quot;yddxsqjxqbd&quot;,&quot;emap-app-name&quot;:&quot;swmxsqjapp&quot;,&quot;emap-model-name&quot;:&quot;yddxsqjxqbdModel&quot;}">
+                        <div class="emapm-items">
+                            <div class="mint-cell-group mt-bg-lv2">
+                                <div class="mint-cell-group-title mt-color-grey-lv3 emap-cellgroup-hastitle">去向信息
+                                </div>
+                                <div class="mint-cell-group-content mint-hairline--top-bottom mt-bg-white mt-bColor-after-grey-lv5">
+                                    <div class="emapm-item">
+                                        <div class="__em-selectlist"><a
+                                                class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">是否出校</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{isLeavingSchool}</div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假类别</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585=""
+                                                         class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div class="__em-selectlist"><a
+                                                class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span class="mint-cell-text mt-color-grey-lv3">是否离开学校所在地</span>
+                                                    <!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{isLeavingLocation}</div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">出校去向</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">详细地址</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">紧急联系人</span>
+                                                    <!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">紧急联系人电话</span>
+                                                    <!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emapm-items">
+                            <div class="mint-cell-group mt-bg-lv2">
+                                <div class="mint-cell-group-title mt-color-grey-lv3 emap-cellgroup-hastitle">请假信息
+                                </div>
+                                <div class="mint-cell-group-content mint-hairline--top-bottom mt-bg-white mt-bColor-after-grey-lv5">
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">学年</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        {academicYear}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">学期</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        {term}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假类型</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        {leaveType}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假性质</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        {leaveNature}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假开始日期</span>
+                                                    <!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{startDate}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" style="display: none;"><span
+                                                class="mint-cell-mask mt-bg-after-grey"></span>
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 15px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey">请假开始日期</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value is-link mt-color-grey"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;"><span
+                                                        class="">{startDate}</span></div>
+                                                <i class="mint-cell-icon mt-color-grey-lv3 iconfont icon-keyboardarrowright"></i>
+                                            </div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假结束时间</span>
+                                                    <!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{endDate}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" style="display: none;"><span
+                                                class="mint-cell-mask mt-bg-after-grey"></span>
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 15px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey">请假结束时间</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value is-link mt-color-grey"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;"><span
+                                                        class="">{endDate}</span></div>
+                                                <i class="mint-cell-icon mt-color-grey-lv3 iconfont icon-keyboardarrowright"></i>
+                                            </div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假天数</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{leaveDays}</div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">来源类型</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        学生申请
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div class="__em-textarea __em-textarea-readonly"><a
+                                                class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">请假事由</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;"><span
+                                                        class="mt-color-grey-lv3 mt-cell-diy-span">{leaveReason}</span>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">学生编号</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{studentNumber}</div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">WID</span><!----></div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">申请编号</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">
+                                                        {applicationNumber}
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="display: none;">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">审核状态</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        已通过
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item" style="">
+                                        <div data-v-0220a7a8="" class="__em-attachment-list"><p data-v-0220a7a8=""
+                                                                                                class="__em-attachment-list-title mt-color-grey-lv3">
+                                            证明材料</p> <a data-v-0220a7a8=""
+                                                            class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title"><img data-v-0220a7a8=""
+                                                                                  src="{proofMaterial}"
+                                                                                  class="__em-img-icon">
+                                                    <div data-v-0220a7a8="" class="__em-file-info"><p data-v-0220a7a8=""
+                                                                                                      class="__em-file-info_name">
+                                                        {proofMaterial2}</p>
+                                                        <p data-v-0220a7a8="" class="__em-file-info_size"><span
+                                                                data-v-0220a7a8="">228KB</span><!----></p></div>
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey"
+                                                     style="justify-content: normal;"><span
+                                                        style="line-height: initial; word-break: break-all;"></span>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!---->
+                                            <div data-v-0220a7a8=""
+                                                 class="cube-popup cube-popup_mask cube-image-preview"
+                                                 style="z-index: 100; display: none;">
+                                                <div class="cube-popup-mask"></div>
+                                                <div class="cube-popup-container">
+                                                    <div class="cube-popup-content">
+                                                        <div class="cube-image-preview-container">
+                                                            <div class="cube-image-preview-header"></div><!---->
+                                                            <div class="cube-image-preview-footer"><span
+                                                                    class="cube-image-preview-counter">1/0</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">手机号</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3">{phoneNumber}</div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emapm-items">
+                            <div class="mint-cell-group mt-bg-lv2">
+                                <div class="mint-cell-group-title mt-color-grey-lv3 emap-cellgroup-hastitle">销假信息
+                                </div>
+                                <div class="mint-cell-group-content mint-hairline--top-bottom mt-bg-white mt-bColor-after-grey-lv5">
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">销假状态</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585="" class="em-select-value mt-color-grey-lv3">
+                                                        未销假
+                                                    </div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-12b52585=""><a data-v-12b52585=""
+                                                                   class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">销假类型</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div data-v-12b52585=""
+                                                         class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">销假时间</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">销假人</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div><a class="mint-cell mt-bg-white mt-bColor-grey-lv5"><!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">销假说明</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
+                                                    <div class="em-select-value mt-color-grey-lv3"></div>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!----></div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-da94dbc4="" data-v-2a28b493=""
+                                             class="bh-upload-wrap emapm-uploa-imgs" host="http://xgxt.hnust.edu.cn"
+                                             value-align="normal"><a data-v-da94dbc4=""
+                                                                     class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">合照示例</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px);"><span
+                                                        style="line-height: initial; word-break: break-all;"></span>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!---->
+                                            <div data-v-da94dbc4=""> <!----></div>
+                                            <div data-v-da94dbc4="" class="mint-actionsheet mt-bg-transparent"
+                                                 style="display: none;">
+                                                <ul class="mint-actionsheet-list" style="margin-bottom: 4px;">
+                                                    <li class="
+                    mint-actionsheet-listitem
+                    mt-color-grey mt-bg-white mt-bColor-grey-lv5
+                ">
+                                                        拍照
+                                                    </li>
+                                                    <li class="
+                    mint-actionsheet-listitem
+                    mt-color-grey mt-bg-white mt-bColor-grey-lv5
+                ">
+                                                        从相册中选择
+                                                    </li>
+                                                </ul>
+                                                <a class="mint-actionsheet-button mt-btn-default mt-color-grey">
+                                                    取消
+                                                </a></div>
+                                            <div data-v-da94dbc4=""
+                                                 class="cube-popup cube-popup_mask cube-image-preview"
+                                                 style="z-index: 100; display: none;">
+                                                <div class="cube-popup-mask"></div>
+                                                <div class="cube-popup-container">
+                                                    <div class="cube-popup-content">
+                                                        <div class="cube-image-preview-container">
+                                                            <div class="cube-image-preview-header"></div><!---->
+                                                            <div class="cube-image-preview-footer"><span
+                                                                    class="cube-image-preview-counter">1/0</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="emapm-item">
+                                        <div data-v-da94dbc4="" data-v-2a28b493=""
+                                             class="bh-upload-wrap emapm-uploa-imgs" host="http://xgxt.hnust.edu.cn"
+                                             value-align="normal"><a data-v-da94dbc4=""
+                                                                     class="mint-cell mt-bg-white mt-bColor-grey-lv5">
+                                            <!---->
+                                            <div class="mint-cell-left"></div>
+                                            <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
+                                                 style="padding-right: 20px;">
+                                                <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                                    <!----><!----><span
+                                                        class="mint-cell-text mt-color-grey-lv3">学生合照</span><!---->
+                                                </div>
+                                                <div class="mint-cell-value mt-color-grey-lv3"
+                                                     style="flex: 1 1 calc(100% - 96px);"><span
+                                                        style="line-height: initial; word-break: break-all;"></span>
+                                                </div><!----></div>
+                                            <div class="mint-cell-right"></div>
+                                        </a> <!---->
+                                            <div data-v-da94dbc4=""> <!----></div>
+                                            <div data-v-da94dbc4="" class="mint-actionsheet mt-bg-transparent"
+                                                 style="display: none;">
+                                                <ul class="mint-actionsheet-list" style="margin-bottom: 4px;">
+                                                    <li class="
+                    mint-actionsheet-listitem
+                    mt-color-grey mt-bg-white mt-bColor-grey-lv5
+                ">
+                                                        拍照
+                                                    </li>
+                                                    <li class="
+                    mint-actionsheet-listitem
+                    mt-color-grey mt-bg-white mt-bColor-grey-lv5
+                ">
+                                                        从相册中选择
+                                                    </li>
+                                                </ul>
+                                                <a class="mint-actionsheet-button mt-btn-default mt-color-grey">
+                                                    取消
+                                                </a></div>
+                                            <div data-v-da94dbc4=""
+                                                 class="cube-popup cube-popup_mask cube-image-preview"
+                                                 style="z-index: 100; display: none;">
+                                                <div class="cube-popup-mask"></div>
+                                                <div class="cube-popup-container">
+                                                    <div class="cube-popup-content">
+                                                        <div class="cube-image-preview-container">
+                                                            <div class="cube-image-preview-header"></div><!---->
+                                                            <div class="cube-image-preview-footer"><span
+                                                                    class="cube-image-preview-counter">1/0</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mint-hr" style="background: rgb(232, 232, 232);"></div>
+                    <div class="mint-layout-spacing sjakx3i5n" style="height: 15px;"></div> <!----> <!---->
+                    <div class="mint-layout-spacing sjakx3i5n" style="height: 15px;"></div>
+                    <div class="mint-layout-container bh-bg-color-light cjas1u9dg">
+                        <div class="mint-hr" style="background: rgb(232, 232, 232);"></div>
+                        <div class="mint-layout-container" style="padding: 16px 20px !important;">
+                            <div class="mint-layout-lr">
+                                <div position="left" class="mint-layout-lr-item mint-layout-container">
+                                    <div class="mint-text mt-color-default">审核流程</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mint-hr OCjas22nkj" style="background: rgb(232, 232, 232);"></div>
+                        <div class="OCjauorj8v mint-steps mt-bg-white mint-steps--vertical" selected="selected"><!---->
+                            <div class="mint-steps__items mint-steps__items--alone" style="padding-left: 150px;">
+                                <div class="mint-step bh-color-gray-3 mint-step--vertical mint-step--finish mt-color-grey-lv4">
+                                    <div class="mint-step__circle-container mt-bg-lv3"><i
+                                            class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"></i>
+                                    </div>
+                                    <div class="mint-step__time mt-color-grey-lv4">
+                                        <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">{submitTime}
+                                        </div>
+                                    </div>
+                                    <div class="mint-step__title">
+                                        提交申请
+                                        <span class="bh-color-warning">
+
+            </span></div>
+                                    <div class="mint-step__line mt-bg-grey-lv6"></div>
+                                </div>
+                                <div class="mint-step bh-color-gray-3 mint-step--vertical mint-step--finish mt-color-grey-lv4">
+                                    <div class="mint-step__circle-container mt-bg-lv3"><i
+                                            class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"></i>
+                                    </div>
+                                    <div class="mint-step__time mt-color-grey-lv4">
+                                        <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default"></div>
+                                        <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">{approvalTime}
+                                        </div>
+                                    </div>
+                                    <div class="mint-step__title">
+                                        辅导员审核
+                                        <span class="bh-color-warning">
+
+            </span>
+                                        <div>
+                                            <div class="mint-text OCjaunojrix mt-color-default">
+                                                通过
+                                            </div>
+                                            <div class="mint-text OCjaunojrix mt-color-default">审核人：{approverName}</div>
+                                            <div class="mint-text OCjaunojrix mt-color-default">
+                                                <pre>审核意见：同意</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mint-step__line mt-bg-grey-lv6"></div>
+                                </div>
+                                <div class="mint-step bh-color-gray-3 mint-step--vertical mint-step--finish mt-color-grey-lv4"
+                                     text="结束">
+                                    <div class="mint-step__circle-container mt-bg-lv3"><i
+                                            class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"></i>
+                                    </div>
+                                    <div class="mint-step__time mt-color-grey-lv4"></div>
+                                    <div class="mint-step__title">结束</div>
+                                    <div class="mint-step__line mt-bg-grey-lv6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!----></div>
+            </div>
+            <div class="mint-layout-spacing sjakx3i5n" style="height: 15px;"></div>
+            <div class="mint-layout-container sjal0wkw6 OPjbcyeo3s" style="display: none;">
+                <button class="mint-button OSjal0ykai OPjbcyeo3t mt-btn-primary mint-button--normal" text="删除"><!---->
+                    删除
+                </button>
+            </div>
+            <div class="mint-layout-container sjal0wkw6 OPjbcyeo3s" style="display: none;">
+                <button class="mint-button OSjal0ykai OPjbcyeo3t mt-btn-primary mint-button--normal" text="重新申请">
+                    <!---->重新申请
+                </button>
+            </div>
+            <div class="mint-layout-spacing sjakx3i5n" style="height: 15px;"></div>
+            <div class="mint-fixed-container mint-fixed-container--bottom"
+                 style="width: 100%; z-index: 9; display: flex !important; padding-top: 8px !important;">
+                <button class="mint-button xsqj-dwxj-xjsq mt-btn-default mint-button--normal" text="定位销假"><!---->
+                    定位销假
+                </button> <!----> <!---->
+                <button class="mint-button xsqj-dwxj-xjsq mt-btn-primary mint-button--normal" text="续假申请"><!---->
+                    续假申请
+                </button>
+            </div> <!----></div>
+    </div>
+</div>
+<div class="mint-indicator" style="display: none;">
+    <div class="mint-indicator-wrapper" style="padding: 15px;"><span class="mint-indicator-spin"><div
+            class="mint-spinner-snake"
+            style="border-top-color: rgb(214, 214, 214); border-left-color: rgb(214, 214, 214); border-bottom-color: rgb(214, 214, 214); height: 32px; width: 32px;"></div></span><span
+            class="mint-indicator-text" style="display: none;"></span></div>
+    <div class="mint-indicator-mask"></div>
+</div>
+
+</body>
+</html>

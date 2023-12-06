@@ -1,0 +1,23 @@
+{
+  "name": "vue-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite ",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vant/touch-emulator": "^1.4.0",
+    "axios": "^1.6.2",
+    "vant": "^4.7.3",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vant/auto-import-resolver": "^1.0.2",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "less": "^4.2.0",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.4.11"
+  }
+}
