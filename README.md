@@ -5,6 +5,8 @@
  <div align="center">
    <img width="160" src="https://blog.rick.icu/rick.jpeg" alt="logo"></br>
 </diV>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rickhqh/hnust_leave_note&env=VITE_BACK_URL&project-name=hnust_leave_note&repository-name=hnust_leave_note)
+
 
 
 
