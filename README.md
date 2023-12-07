@@ -4,9 +4,11 @@
 <img width="160" src="https://blog.rick.icu/rick.jpeg" alt="logo"></br>
 <h1 align="center">Hnust Leave Note</h1>
 
-<h2>点击一键免费部署你的请假条。</h2>
+<h2>点击一键免费部署你的请假条</h2>
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frickhqh%2Fhnust_leave_note&env=VITE_BACK_URL&project-name=hnust_leave_note&repository-name=hnust_leave_note)
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rickhqh/hnust_leave_note)
 
 </div>
 
