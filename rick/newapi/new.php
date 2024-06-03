@@ -73,6 +73,6 @@ $handle=fopen($path,"w");
 
 fwrite($handle,$text);
 fclose($handle);
-echo "https://hnust.rick.icu/new/newapi/".$path;
+echo "https://www.iservicelab.net/new/newapi/".$path;
 exit();
 ?>
